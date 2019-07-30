@@ -1,12 +1,14 @@
 import React from 'react';
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import rootReducer from './store/reducers';
 import {Provider} from 'react-redux';
 import AuthContainer from "./components/ContainerComponents/AuthContainer";
 import RegistrationContainer from "./components/ContainerComponents/RegistrationContainer";
 import PersonContainer from "./components/ContainerComponents/PersonContainer";
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from "redux-thunk";
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 export default class App extends React.Component {
     render() {
