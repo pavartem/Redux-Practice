@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
     return {
         email: state.auth.email,
         password: state.auth.password,
-        api: state.person.api
+        api: state.person.localApi
     };
 };
 

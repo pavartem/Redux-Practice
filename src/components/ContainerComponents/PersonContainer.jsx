@@ -1,43 +1,33 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {saveApiData} from "../../store/person/actions";
+import {getApiData} from "../../store/person/actions";
 import Person from "../PresentationComponents/Person";
 
 class PersonContainer extends React.Component {
+    state = {
+        api: {
+            name: 'test',
+            height: 175,
+            mass: 55
+        }
+    };
 
-    constructor(props) {
-        super(props);
-        //this.onEmailChange = this.onEmailChange.bind(this);
-        this.state = {
-            api: {}
-        };
-        this.componentDidMount = this.componentDidMount.bind(this);
-    }
-
-    componentDidMount() {
-        fetch('https://swapi.co/api/people/1/')
-            .then((response) => {
-                return response.json();
-            })
-            .then((user) => {
-                this.setState({api:user});
-            })
-            .catch( console.log );
-    }
 
     render() {
-        return <Person api={this.state.api} saveApiData={this.props.saveApiData}/>
+        return <Person api={this.props.api}
+                       getApiData={this.props.getApiData}
+        />
     }
 }
 
 const mapStateToProps = (state) => {
     return {
-        api: state.person.api
+        api: state.person.localApi
     };
 };
 
 const mapDispatchToProps = {
-    saveApiData
+    getApiData
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonContainer);

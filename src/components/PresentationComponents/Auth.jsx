@@ -18,7 +18,7 @@ export default class Auth extends React.Component {
 
     render() {
         return (
-            <div className="auth" style={{flex: 1}}>
+            <div>
                 <h3>Sign In</h3>
                 <form>
                     <div>
@@ -46,7 +46,7 @@ export default class Auth extends React.Component {
                     <div>
                         <button className="btn btn-primary mt-2">Sign In</button>
                     </div>
-                    <div style={{border: "1px solid black", padding: 10}}>
+                    <div className="p-5 bg-light mt-5">
                         <p>Name: {this.props.api.name}</p>
                         <p>Height: {this.props.api.height}</p>
                         <p>Mass: {this.props.api.mass}</p>

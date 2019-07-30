@@ -1,16 +1,18 @@
-import {PERSON_SAVE_API_DATA} from "./actions";
+import {PERSON_GET_API_DATA} from "./actions";
 
 const defaultState = {
-    api: {}
+    api: {},
+    localApi: {}
 };
 
 export const personReducer = (state = defaultState, action) => {
     switch (action.type) {
-        case PERSON_SAVE_API_DATA:
+        case PERSON_GET_API_DATA:
             return {
                 ...state,
-                api: action.payload
+                localApi: action.payload
             };
+        default:
+            return state;
     }
-    return state;
 };
